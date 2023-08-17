@@ -8,7 +8,7 @@ def main():
 
     st.markdown("""
     <style>
-        .stButton>button {color: white; background-color: #4CAF50; border-radius: 5px;}
+        .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
     </style>
     """, unsafe_allow_html=True)
 
