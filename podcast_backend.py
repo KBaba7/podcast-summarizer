@@ -98,9 +98,9 @@ def get_podcast_people(podcast_transcript):
     import openai
 
     # Prepare the conversation input
-    instructPrompt = """Here is the transcript of a podcast episode.
-    Please identify the hosts and starring guests. Structure your answer as in this example:
-    Host(s): \n Guest(s): \n"""
+    instructPrompt = """You will be given the transcript of a podcast episode.
+    Please identify the hosts and starring guests. Give your answer in a structured way, using bullet points.
+    """
     request = instructPrompt + podcast_transcript
     conversation = [
         {"role": "system", "content": "You are a helpful assistant."},
@@ -121,10 +121,7 @@ def get_podcast_people(podcast_transcript):
 def get_podcast_highlights(podcast_transcript):
   import openai
   ### RETURN THE HIGHLIGHTS OF THE PODCAST
-  instructPrompt = """Extract the key moments in the given podcast transcript.
-  Include interesting insights from the guest or critical questions that the host might have put forward.
-  Be concise.
-  """
+  instructPrompt = """Extract the key moments in the given podcast transcript. Be concise."""
   request = instructPrompt + podcast_transcript
   chatOutput = openai.ChatCompletion.create(model="gpt-3.5-turbo-16k",
                                             messages=[{"role": "system", "content": "You are a helpful assistant."},
