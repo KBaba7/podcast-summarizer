@@ -25,6 +25,7 @@ def main():
         # Display the podcast title
         st.subheader("Episode Title")
         st.write(podcast_info['podcast_details']['episode_title'])
+        st.audio(podcast_info['podcast_details']['episode_audio_url'])
 
         # Display the podcast summary and the cover image in a side-by-side layout
         col1, col2 = st.columns([7, 3])
@@ -41,7 +42,8 @@ def main():
         col3, col4 = st.columns([3, 7])
 
         with col3:
-            st.subheader("Who?")
+            #st.subheader("Who?")
+            st.write("<hr>", unsafe_allow_html=True)
             st.write(podcast_info['podcast_people'])
 
         # with col4:
@@ -58,9 +60,12 @@ def main():
     # User Input box
     st.sidebar.subheader("Add and Process New Podcast Feed")
     url = st.sidebar.text_input("Link to RSS Feed")
+    st.sidebar.markdown("Find the link to the RSS feed for your favorite podcast at [https://www.listennotes.com/](https://www.listennotes.com/).
+")
+
 
     process_button = st.sidebar.button("Process Podcast Feed")
-    st.sidebar.markdown("**Note**: Podcast processing can take up to 5 mins, please be patient.")
+    st.sidebar.markdown("**Note**: A 30 min podcast processing can take up to 5 mins, please be patient.")
 
     if process_button:
 
@@ -73,6 +78,7 @@ def main():
         # Display the podcast title
         st.subheader("Episode Title")
         st.write(podcast_info['podcast_details']['episode_title'])
+        st.audio(podcast_info['podcast_details']['episode_audio_url'])
 
         # Display the podcast summary and the cover image in a side-by-side layout
         col1, col2 = st.columns([7, 3])
@@ -89,7 +95,8 @@ def main():
         col3, col4 = st.columns([3, 7])
 
         with col3:
-            st.subheader("Who?")
+            #st.subheader("Who?")
+            st.write("<hr>", unsafe_allow_html=True)
             st.write(podcast_info['podcast_people'])
 
         # with col4:
