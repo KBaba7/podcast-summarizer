@@ -6,6 +6,12 @@ import os
 def main():
     st.title("Newsletter Dashboard")
 
+    st.markdown("""
+    <style>
+        .stButton>button {color: white; background-color: #4CAF50; border-radius: 5px;}
+    </style>
+    """, unsafe_allow_html=True)
+
     available_podcast_info = create_dict_from_json_files('.')
 
     # Left section - Input fields

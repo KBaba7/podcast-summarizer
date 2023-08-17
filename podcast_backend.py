@@ -119,17 +119,22 @@ def get_podcast_people(podcast_transcript):
 
 @stub.function(image=uplimit_image, secret=modal.Secret.from_name("my-openai-secret"))
 def get_podcast_highlights(podcast_transcript):
-  import openai
-  ### RETURN THE HIGHLIGHTS OF THE PODCAST
-  instructPrompt = """Extract the key moments in the given podcast transcript. Be concise."""
-  request = instructPrompt + podcast_transcript
-  chatOutput = openai.ChatCompletion.create(model="gpt-3.5-turbo-16k",
-                                            messages=[{"role": "system", "content": "You are a helpful assistant."},
-                                                      {"role": "user", "content": request}
-                                                      ]
-                                            )
-  podcastHighlights = chatOutput.choices[0].message.content
-  return podcastHighlights
+    import openai
+
+    messages = [
+        {"role": "system", "content": "You are assisting in extracting podcast highlights."},
+        {"role": "user", "content": "Extract the key moments from the following podcast transcript:"},
+        {"role": "assistant", "content": podcast_transcript}
+    ]
+
+    chatOutput = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo-16k",
+        messages=messages
+    )
+
+    podcastHighlights = chatOutput.choices[0].message['content']
+    return podcastHighlights
+
 
 @stub.function(image=uplimit_image, secret=modal.Secret.from_name("my-openai-secret"), timeout=1200)
 def process_podcast(url, path):
