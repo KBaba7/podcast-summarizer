@@ -17,7 +17,7 @@ uplimit_image = modal.Image.debian_slim().pip_install("feedparser",
                                                      "ffmpeg",
                                                      "openai",
                                                      "tiktoken",
-                                                     "wikipedia",
+                                                     #"wikipedia",
                                                      "ffmpeg-python").apt_install("ffmpeg").run_function(download_whisper)
 
 @stub.function(image=uplimit_image, gpu="any", timeout=600)
@@ -73,6 +73,7 @@ def get_transcribe_podcast(rss_url, local_path):
   output['episode_title'] = episode_title
   output['episode_image'] = episode_image
   output['episode_transcript'] = result['text']
+  output['episode_audio_url'] = episode_url
   return output
 
 @stub.function(image=uplimit_image, secret=modal.Secret.from_name("my-openai-secret"))
@@ -80,41 +81,49 @@ def get_podcast_summary(podcast_transcript):
   import openai
   ## RETURN THE SUMMARY OF THE PODCAST USING OPENAI
   instructPrompt = """
-  You will be provided with the transcript of a podcast episode. Your task is to provide an overall summary of the discussion 
-  in the podcast episode. Make sure to identify podcast hosts and starring guests. Include a few details, if mentioned in the transcript, 
-  about who the starring guests are."""
+  You will be provided with the transcript of a podcast episode. Your task is to provide an overall summary of the transcript.
+  Make sure to identify podcast hosts and starring guests. Include a few details, if mentioned in the transcript,
+  about who the starring guests are. Try to be concise."""
   request = instructPrompt + podcast_transcript
   chatOutput = openai.ChatCompletion.create(model="gpt-3.5-turbo-16k",
                                             messages=[{"role": "system", "content": "You are a helpful assistant."},
                                                       {"role": "user", "content": request}
                                                       ]
                                             )
-  podcastSummary = chatOutput.choices[0].message.content                                       
+  podcastSummary = chatOutput.choices[0].message.content
   return podcastSummary
 
 @stub.function(image=uplimit_image, secret=modal.Secret.from_name("my-openai-secret"))
 def get_podcast_people(podcast_transcript):
-  import openai
-  # import wikipedia
-  # import json
-  ## RETURN THE PODCAST GUEST INFORMATION
-  instructPrompt = """Here is the transcript of a podcast episode. 
-  Can you identify the hosts and starring guests?"""
-  request = instructPrompt + podcast_transcript
-  chatOutput = openai.ChatCompletion.create(model="gpt-3.5-turbo-16k",
-                                            messages=[{"role": "system", "content": "You are a helpful assistant."},
-                                                      {"role": "user", "content": request}
-                                                      ]
-                                            )
-  podcastPeople = chatOutput.choices[0].message.content
-  return podcastPeople
+    import openai
+
+    # Prepare the conversation input
+    instructPrompt = """Here is the transcript of a podcast episode.
+    Please identify the hosts and starring guests. Structure your answer as in this example:
+    Host(s): \n Guest(s): \n"""
+    request = instructPrompt + podcast_transcript
+    conversation = [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": request}
+    ]
+
+    # Call the OpenAI API
+    chatOutput = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo-16k",
+        messages=conversation
+    )
+
+    # Extract and return the response content
+    podcastPeople = chatOutput.choices[0].message['content']
+    return podcastPeople
 
 @stub.function(image=uplimit_image, secret=modal.Secret.from_name("my-openai-secret"))
 def get_podcast_highlights(podcast_transcript):
   import openai
   ### RETURN THE HIGHLIGHTS OF THE PODCAST
-  instructPrompt = """Extract the key moments in the given podcast transcript. 
+  instructPrompt = """Extract the key moments in the given podcast transcript.
   Include interesting insights from the guest or critical questions that the host might have put forward.
+  Be concise.
   """
   request = instructPrompt + podcast_transcript
   chatOutput = openai.ChatCompletion.create(model="gpt-3.5-turbo-16k",
