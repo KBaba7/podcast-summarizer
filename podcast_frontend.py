@@ -29,8 +29,8 @@ def main():
         st.header("Newsletter Content")
 
         # Display the podcast title
-        st.subheader("Episode Title")
-        st.write(podcast_info['podcast_details']['episode_title'])
+        #st.subheader("Episode Title")
+        st.title(podcast_info['podcast_details']['episode_title'])
         st.audio(podcast_info['podcast_details']['episode_audio_url'])
 
         # Display the podcast summary and the cover image in a side-by-side layout
@@ -58,7 +58,7 @@ def main():
     st.sidebar.markdown("Find the link to the RSS feed for your favorite podcast at [https://www.listennotes.com/](https://www.listennotes.com/)")
 
     url = st.sidebar.text_input("Link to RSS Feed")
-    
+
 
 
     process_button = st.sidebar.button("Process Podcast Feed")
