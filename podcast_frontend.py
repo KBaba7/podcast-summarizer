@@ -47,7 +47,7 @@ def main():
             st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
 
         # Display the five key moments
-        st.subheader("Key Moments")
+        st.markdown("""---""")
         key_moments = podcast_info['podcast_highlights']
         for moment in key_moments.split('\n'):
             st.markdown(
@@ -91,7 +91,7 @@ def main():
             st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
 
         # Display the five key moments
-        st.subheader("Key Moments")
+        st.markdown("""---""")
         key_moments = podcast_info['podcast_highlights']
         for moment in key_moments.split('\n'):
             st.markdown(
