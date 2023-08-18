@@ -32,11 +32,13 @@ def get_transcribe_podcast(rss_url, local_path):
   podcast_title = feed['feed']['title']
   episode_title = feed.entries[0]['title']
   episode_image = feed['feed']['image'].href
+  episode_url = None  # Initialize episode_url to None
   for item in feed.entries[0].links:
     if (item['type'] == 'audio/mpeg' or item['type'] == 'audio/mp3'):
       episode_url = item.href
+      break  # Exit the loop once a valid episode URL is found
   episode_name = "podcast_episode.mp3"
-  print ("RSS URL read and episode URL: ", episode_url)
+  print("RSS URL read and episode URL: ", episode_url)
 
   # Download the podcast episode by parsing the RSS feed
   from pathlib import Path
@@ -72,8 +74,8 @@ def get_transcribe_podcast(rss_url, local_path):
   output['podcast_title'] = podcast_title
   output['episode_title'] = episode_title
   output['episode_image'] = episode_image
-  output['episode_transcript'] = result['text']
   output['episode_audio_url'] = episode_url
+  output['episode_transcript'] = result['text']
   return output
 
 @stub.function(image=uplimit_image, secret=modal.Secret.from_name("my-openai-secret"))
@@ -85,10 +87,12 @@ def get_podcast_summary(podcast_transcript):
   Make sure to identify podcast hosts and starring guests. Include a few details, if mentioned in the transcript,
   about who the starring guests are. Try to be concise."""
   request = instructPrompt + podcast_transcript
+  conversation = [
+    {"role": "system", "content": "You are assisting in extracting podcast information for a newsletter."},
+    {"role": "user", "content": request}
+    ]
   chatOutput = openai.ChatCompletion.create(model="gpt-3.5-turbo-16k",
-                                            messages=[{"role": "system", "content": "You are a helpful assistant."},
-                                                      {"role": "user", "content": request}
-                                                      ]
+                                            messages=conversation  
                                             )
   podcastSummary = chatOutput.choices[0].message.content
   return podcastSummary
@@ -99,11 +103,12 @@ def get_podcast_people(podcast_transcript):
 
     # Prepare the conversation input
     instructPrompt = """You will be given the transcript of a podcast episode.
-    Please identify the hosts and starring guests. Give your answer in a structured way, using bullet points.
+    Please identify the hosts and starring guests (if any). Give your answer in a structured way, with host speaker(s)
+    and guest(s) listed separated by a new line.
     """
     request = instructPrompt + podcast_transcript
     conversation = [
-        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "system", "content": "You are assisting in extracting podcast information for a newsletter."},
         {"role": "user", "content": request}
     ]
 

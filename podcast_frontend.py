@@ -31,7 +31,7 @@ def main():
         # Display the podcast title
         st.subheader("Episode Title")
         st.write(podcast_info['podcast_details']['episode_title'])
-        #st.audio(podcast_info['podcast_details']['episode_audio_url'])
+        st.audio(podcast_info['podcast_details']['episode_audio_url'])
 
         # Display the podcast summary and the cover image in a side-by-side layout
         col1, col2 = st.columns([7, 3])
@@ -75,7 +75,7 @@ def main():
         # Display the podcast title
         st.subheader("Episode Title")
         st.write(podcast_info['podcast_details']['episode_title'])
-        #st.audio(podcast_info['podcast_details']['episode_audio_url'])
+        st.audio(podcast_info['podcast_details']['episode_audio_url'])
 
         # Display the podcast summary and the cover image in a side-by-side layout
         col1, col2 = st.columns([7, 3])
