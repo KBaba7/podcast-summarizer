@@ -6,7 +6,7 @@ import os
 def main():
     c1, c2 = st.columns([1, 6])
     with c1:
-        st.image("mic.jpeg", width=50)
+        st.image("mic.jpeg", width=100)
     with c2:    
         st.title("Podcast Newsletter")
     st.divider()
