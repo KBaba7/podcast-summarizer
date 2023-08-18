@@ -6,10 +6,18 @@ import os
 def main():
     st.markdown("""
     <style>
-        .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
+        /* The main content area */
+        .main .block-container {
+            background-color: #206579 !important; 
+            color : #fff !important;
+        }
+
+        /* The background of the entire body */
         body {
            background-color: #ec864b;
-        }  
+        }        
+        .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
+        
     </style>
     """, unsafe_allow_html=True)
 
