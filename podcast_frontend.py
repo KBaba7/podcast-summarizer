@@ -30,7 +30,7 @@ def main():
 
         # Display the podcast title
         #st.subheader("Episode Title")
-        st.title(podcast_info['podcast_details']['episode_title'])
+        st.subheader(podcast_info['podcast_details']['episode_title'])
         st.audio(podcast_info['podcast_details']['episode_audio_url'])
 
         # Display the podcast summary and the cover image in a side-by-side layout
