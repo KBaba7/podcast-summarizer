@@ -7,7 +7,7 @@ def main():
     st.markdown("""
     <style>
         /* The main content area */
-        .main .block-container {
+        .main{
             background-color: #d1e4eb; 
         }  
         .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
