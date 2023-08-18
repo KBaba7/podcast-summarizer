@@ -4,7 +4,11 @@ import json
 import os
 
 def main():
-    st.title("Newsletter Dashboard")
+    c1, c2 = st.columns([3, 7])
+    with c1:
+        st.image("mic.jpeg")
+    with c2:    
+        st.title("Newsletter Dashboard")
     st.divider()
     st.markdown("""
     <style>
