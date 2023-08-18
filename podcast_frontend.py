@@ -9,6 +9,7 @@ def main():
         st.image("mic.jpeg")
     with c2:    
         st.title("Newsletter Dashboard")
+        st.write("AI-generated podcast summaries")
     st.divider()
     st.markdown("""
     <style>
