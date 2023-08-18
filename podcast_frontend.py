@@ -8,7 +8,8 @@ def main():
     <style>
         .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
         body {
-                background-color: #f2f2f2; /* Set your desired background color */}    
+           background-color: #ec864b;
+        }  
     </style>
     """, unsafe_allow_html=True)
 
