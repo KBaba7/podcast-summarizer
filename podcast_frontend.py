@@ -5,7 +5,7 @@ import os
 
 def main():
     st.title("Newsletter Dashboard")
-
+    st.divider()
     st.markdown("""
     <style>
         .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
