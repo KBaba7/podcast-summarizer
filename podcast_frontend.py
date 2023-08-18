@@ -9,7 +9,6 @@ def main():
         st.image("mic.jpeg")
     with c2:    
         st.title("Podcast Newsletter")
-        st.subheader("AI-generated podcast summaries")
     st.divider()
     st.markdown("""
     <style>
