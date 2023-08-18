@@ -8,7 +8,7 @@ def main():
     <style>
         /* The main content area */
         .main .block-container {
-            background-color: #d1e4eb !important; 
+            background-color: #4c8caf; 
         }
         .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
         
