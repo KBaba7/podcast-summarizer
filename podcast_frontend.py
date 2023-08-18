@@ -26,7 +26,7 @@ def main():
         podcast_info = available_podcast_info[selected_podcast]
 
         # Right section - Newsletter content
-        st.header("Newsletter Content")
+        st.header(podcast_info['podcast_details']['podcast_title'])
 
         # Display the podcast title
         #st.subheader("Episode Title")
@@ -70,7 +70,7 @@ def main():
         podcast_info = process_podcast_info(url)
 
         # Right section - Newsletter content
-        st.header("Newsletter Content")
+        st.header(podcast_info['podcast_details']['podcast_title'])
 
         # Display the podcast title
         st.subheader("Episode Title")
