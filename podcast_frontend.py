@@ -7,9 +7,14 @@ def main():
     st.markdown("""
     <style>
         /* The main content area */
-        .main .block-container{
-            background-color: #d1e4eb; 
-        }  
+        .main .block-container {
+            background-color: #206579 !important; 
+        }
+
+        /* The background of the entire body */
+        body {
+           background-color: #ec864b;
+        }
         .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
         
     </style>
