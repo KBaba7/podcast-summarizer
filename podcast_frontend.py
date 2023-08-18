@@ -4,7 +4,7 @@ import json
 import os
 
 def main():
-    c1, c2 = st.columns([3, 7])
+    c1, c2 = st.columns([1, 9])
     with c1:
         st.image("mic.jpeg")
     with c2:    
