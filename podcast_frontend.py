@@ -9,12 +9,11 @@ def main():
         /* The main content area */
         .main .block-container {
             background-color: #206579; 
-            color : #fff;
         }
 
         /* The background of the entire body */
         body {
-           background-color: #fff;
+           background-color: #206579;;
         }        
         .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
         
