@@ -4,17 +4,20 @@ import json
 import os
 
 def main():
+    st.markdown("""
+    <style>
+        .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
+        body {
+                background-color: #f2f2f2; /* Set your desired background color */}    
+    </style>
+    """, unsafe_allow_html=True)
+
     c1, c2 = st.columns([1, 6])
     with c1:
         st.image("mic.jpeg", width=100)
     with c2:    
         st.title("Podcast Newsletter")
     st.divider()
-    st.markdown("""
-    <style>
-        .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
-    </style>
-    """, unsafe_allow_html=True)
 
     available_podcast_info = create_dict_from_json_files('.')
 
