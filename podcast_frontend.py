@@ -8,13 +8,13 @@ def main():
     <style>
         /* The main content area */
         .main .block-container {
-            background-color: #206579 !important; 
-            color : #fff !important;
+            background-color: #206579; 
+            color : #fff;
         }
 
         /* The background of the entire body */
         body {
-           background-color: #ec864b;
+           background-color: #fff;
         }        
         .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
         
