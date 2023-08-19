@@ -9,17 +9,12 @@ def main():
     page_title="Podcast Summarizer",
     page_icon="🎙️",
     layout="wide")
-    # Set css styling 
-    # st.markdown("""
-    # <style>
-    #     /* The main content area */
-    #     .main .block-container {
-    #         background-color: #f7f7f7; 
-    #     }
-    #     .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
-        
-    # </style>
-    # """, unsafe_allow_html=True)
+    #Set css styling 
+    st.markdown("""
+    <style>
+        .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
+    </style>
+    """, unsafe_allow_html=True)
 
     c1, c2 = st.columns([1, 6])
     with c1:
