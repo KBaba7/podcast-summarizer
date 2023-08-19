@@ -68,7 +68,7 @@ def main():
 
     # User Input box
     st.sidebar.subheader("Add and Process New Podcast Feed")
-    st.sidebar.markdown("Find the link to the RSS feed for your favorite podcast at [https://www.listennotes.com/](https://www.listennotes.com/)")
+    st.sidebar.container.markdown("Find the link to the RSS feed for your favorite podcast at [https://www.listennotes.com/](https://www.listennotes.com/)")
 
     url = st.sidebar.text_input("Link to RSS Feed 👇")
     user_input = st.sidebar.empty()
