@@ -68,7 +68,7 @@ def main():
 
     # User Input box
     st.sidebar.subheader("Add and Process New Podcast Feed")
-    box_content="Find the link to the RSS feed for your favorite podcast at [https://www.listennotes.com/](https://www.listennotes.com/)"
+    box_content=st.markdown("Find the link to the RSS feed for your favorite podcast at [https://www.listennotes.com/](https://www.listennotes.com/)")
     st.sidebar.box(box_content,
                    title="Custom Box Title",
                    color="lightblue",
