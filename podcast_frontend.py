@@ -11,8 +11,8 @@ def main():
     layout="wide")
     #Set css styling 
     st.markdown("""
-    <style>
-        body {font-family: serif;}
+    <style>     
+        body {font-family: 'Roboto', sans-serif; }
         .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
     </style>
     """, unsafe_allow_html=True)
