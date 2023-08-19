@@ -49,8 +49,6 @@ def main():
         st.markdown(f'<h4 style="color: {text_color};"> {podcast_info["podcast_details"]["podcast_title"]}</h4>', unsafe_allow_html=True)
         st.markdown("""---""")
         # Display the podcast title
-        #st.subheader("Episode Title")
-        st.write("##")
         st.markdown(f'<h4 style="color: {text_color};"> This week\'s episode:</h4>', unsafe_allow_html=True)
         st.write(podcast_info['podcast_details']['episode_title'])
         st.audio(podcast_info['podcast_details']['episode_audio_url'])
@@ -98,8 +96,6 @@ def main():
             st.markdown(f'<h4 style="color: {text_color};">{podcast_info["podcast_details"]["podcast_title"]}</h4>', unsafe_allow_html=True)
             st.markdown("""---""")
             # Display the podcast title
-            #st.subheader("Episode Title")
-            st.write("##")
             st.markdown(f'<h4 style="color: {text_color};"> This week\'s episode:</h4>', unsafe_allow_html=True)
             st.audio(podcast_info['podcast_details']['episode_audio_url'])
 
