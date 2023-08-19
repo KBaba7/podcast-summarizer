@@ -77,7 +77,7 @@ def main():
 
     if process_button:
         if not url:
-            user_input.error("Please provide RSS feed URL!")
+            user_input.error("Please provide link to RSS Feed!")
         elif user_input:
             user_input.empty()
 
