@@ -29,8 +29,11 @@ def main():
     left_col, right_col = st.columns([1,2])
     with left_col:
         st.markdown(f"<h2 style='color: {text_color};'>🎙️ Podcast Newsletter</h2>", unsafe_allow_html=True)  
+        st.markdown("See what you missed in the last episode of your favorite podcast.")
+        st.markdown("Find the RSS feed for your favorite podcast at [listennotes.com](https://www.listennotes.com/) and get your own AI-generated summary!")
+
     with right_col:
-        st.lottie(lottie_animation, height=200)
+        st.lottie(lottie_animation, height=280)
 
     available_podcast_info = create_dict_from_json_files('.')
 
@@ -39,7 +42,7 @@ def main():
 
     # Dropdown box
     st.sidebar.subheader("Available Podcasts Feeds")
-    selected_podcast = st.sidebar.selectbox("Select Podcast", options=available_podcast_info.keys())
+    selected_podcast = st.sidebar.selectbox("Select Sample Podcast", options=available_podcast_info.keys())
 
     if selected_podcast:
 
@@ -76,8 +79,7 @@ def main():
 
     # User Input box
     st.sidebar.subheader("Add and Process New Podcast Feed")
-    st.sidebar.markdown("Find the link to the RSS feed for your favorite podcast at [https://www.listennotes.com/](https://www.listennotes.com/)")
-
+   
     url = st.sidebar.text_input("Link to RSS Feed 👇")
     user_input = st.sidebar.empty()
     process_button = st.sidebar.button("Process Podcast Feed")
