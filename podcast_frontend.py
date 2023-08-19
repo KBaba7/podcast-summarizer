@@ -8,7 +8,8 @@ def main():
     st.set_page_config(
     page_title="Podcast Summarizer",
     page_icon="🎙️",
-    layout="wide")
+    layout="wide",
+    font="serif")
     #Set css styling 
     st.markdown("""
     <style>
