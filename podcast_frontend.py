@@ -2,27 +2,35 @@ import streamlit as st
 import modal
 import json
 import os
+import requests
+from streamlit_lottie import st_lottie
 
 def main():
+    text_color = "#4784FF"
+    # Get lottie animation
+    def load_animation(url):
+        response = requests.get(url)
+        if response.status_code != 200:
+            return None
+        return response.json()
+
+    lottie_animation = load_animation("https://lottie.host/7eaee87f-cf24-46b0-b1a4-9542a1c1af96/p7orkrfz23.json")
+    
     # Set the page layout to wide mode
     st.set_page_config(
     page_title="Podcast Summarizer",
     page_icon="🎙️",
     layout="wide")
-    #Set css styling 
-    st.markdown("""
-    <style>     
-        body {font-family: serif; }
-        .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
-    </style>
-    """, unsafe_allow_html=True)
 
-    c1, c2 = st.columns([1, 6])
-    with c1:
-        st.image("mic.jpeg", width=100)
-    with c2: 
-        st.markdown(f"<h1 style='color: #25a5be;'>Podcast Newsletter</h1>", unsafe_allow_html=True)   
-    st.divider()
+    # add a custom css file
+    with open( "styles.css" ) as css:
+        st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
+
+    left_col, right_col = st.columns([1,2])
+    with left_col:
+        st.markdown(f"<h1 style='color: {text_color};'>🎙️ Podcast Newsletter</h1>", unsafe_allow_html=True)  
+    with right_col:
+        st.lottie(lottie_animation, height=200)
 
     available_podcast_info = create_dict_from_json_files('.')
 
@@ -38,10 +46,12 @@ def main():
         podcast_info = available_podcast_info[selected_podcast]
 
         # Right section - Newsletter content
-        st.subheader(podcast_info['podcast_details']['podcast_title'])
+        st.markdown(f'<h4 style="color: {text_color};"> {podcast_info["podcast_details"]["podcast_title"]}</h4>', unsafe_allow_html=True)
 
         # Display the podcast title
         #st.subheader("Episode Title")
+        st.write("##")
+        st.markdown(f'<h4 style="color: {text_color};"> This week\'s episode:</h4>', unsafe_allow_html=True)
         st.write(podcast_info['podcast_details']['episode_title'])
         st.audio(podcast_info['podcast_details']['episode_audio_url'])
 
@@ -50,7 +60,7 @@ def main():
 
         with col1:
             # Display the podcast episode summary
-            st.markdown(f"<h2 style='color: #25a5be;'>Podcast Episode Summary</h2>", unsafe_allow_html=True)  
+            st.markdown(f"<h4 style='color: {text_color};'>Podcast Episode Summary</h4>", unsafe_allow_html=True)  
             st.write(podcast_info['podcast_people'])
             st.markdown("""---""")
             st.write(podcast_info['podcast_summary'])
@@ -58,7 +68,7 @@ def main():
         with col2:
             st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
 
-        # Display the five key moments
+        # Display the key moments
         st.markdown("""---""")
         key_moments = podcast_info['podcast_highlights']
         for moment in key_moments.split('\n'):
@@ -85,11 +95,12 @@ def main():
             podcast_info = process_podcast_info(url)
 
             # Right section - Newsletter content
-            st.subheader(podcast_info['podcast_details']['podcast_title'])
+            st.markdown(f'<h4 style="color: {text_color};">{podcast_info["podcast_details"]["podcast_title"]}</h4>', unsafe_allow_html=True)
 
             # Display the podcast title
             #st.subheader("Episode Title")
-            st.write(podcast_info['podcast_details']['episode_title'])
+            st.write("##")
+            st.markdown(f'<h4 style="color: {text_color};"> This week\'s episode:</h4>', unsafe_allow_html=True)
             st.audio(podcast_info['podcast_details']['episode_audio_url'])
 
             # Display the podcast summary and the cover image in a side-by-side layout
@@ -97,7 +108,7 @@ def main():
 
             with col1:
                 # Display the podcast episode summary
-                st.markdown(f"<h2 style='color: #25a5be;'>Podcast Episode Summary</h2>", unsafe_allow_html=True) 
+                st.markdown(f"<h4 style='color: {text_color};'>Podcast Episode Summary</h4>", unsafe_allow_html=True) 
                 st.write(podcast_info['podcast_people'])
                 st.markdown("""---""")
                 st.write(podcast_info['podcast_summary'])
@@ -105,7 +116,7 @@ def main():
             with col2:
                 st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
 
-            # Display the five key moments
+            # Display the key moments
             st.markdown("""---""")
             key_moments = podcast_info['podcast_highlights']
             for moment in key_moments.split('\n'):
