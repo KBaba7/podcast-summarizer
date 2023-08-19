@@ -71,13 +71,15 @@ def main():
     st.sidebar.markdown("Find the link to the RSS feed for your favorite podcast at [https://www.listennotes.com/](https://www.listennotes.com/)")
 
     url = st.sidebar.text_input("Link to RSS Feed")
-
-
-
+    user_input = st.sidebar.empty()
     process_button = st.sidebar.button("Process Podcast Feed")
     st.sidebar.markdown("**Note**: A 30 min podcast processing can take up to 5 mins, please be patient.")
 
     if process_button:
+        if not url:
+            user_input.error("Please provide RSS feed URL!")
+        elif user_input:
+            user_input.empty()
 
         # Call the function to process the URLs and retrieve podcast guest information
         podcast_info = process_podcast_info(url)
