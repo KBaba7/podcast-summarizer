@@ -92,26 +92,26 @@ def main():
             st.write(podcast_info['podcast_details']['episode_title'])
             st.audio(podcast_info['podcast_details']['episode_audio_url'])
 
-        # Display the podcast summary and the cover image in a side-by-side layout
-        col1, col2 = st.columns([7, 3])
+            # Display the podcast summary and the cover image in a side-by-side layout
+            col1, col2 = st.columns([7, 3])
 
-        with col1:
-            # Display the podcast episode summary
-            st.subheader("Podcast Episode Summary")
-            st.write(podcast_info['podcast_people'])
+            with col1:
+                # Display the podcast episode summary
+                st.subheader("Podcast Episode Summary")
+                st.write(podcast_info['podcast_people'])
+                st.markdown("""---""")
+                st.write(podcast_info['podcast_summary'])
+
+            with col2:
+                st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
+
+            # Display the five key moments
             st.markdown("""---""")
-            st.write(podcast_info['podcast_summary'])
-
-        with col2:
-            st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
-
-        # Display the five key moments
-        st.markdown("""---""")
-        key_moments = podcast_info['podcast_highlights']
-        for moment in key_moments.split('\n'):
-            st.markdown(
-                f"<p style='margin-bottom: 5px;'>{moment}</p>", unsafe_allow_html=True)
-        st.markdown("""---""")   
+            key_moments = podcast_info['podcast_highlights']
+            for moment in key_moments.split('\n'):
+                st.markdown(
+                    f"<p style='margin-bottom: 5px;'>{moment}</p>", unsafe_allow_html=True)
+            st.markdown("""---""")   
 
 def create_dict_from_json_files(folder_path):
     json_files = [f for f in os.listdir(folder_path) if f.endswith('.json')]
