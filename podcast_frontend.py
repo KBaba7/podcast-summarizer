@@ -81,16 +81,16 @@ def main():
         elif user_input:
             user_input.empty()
 
-        # Call the function to process the URLs and retrieve podcast guest information
-        podcast_info = process_podcast_info(url)
+            # Call the function to process the URLs and retrieve podcast guest information
+            podcast_info = process_podcast_info(url)
 
-        # Right section - Newsletter content
-        st.subheader(podcast_info['podcast_details']['podcast_title'])
+            # Right section - Newsletter content
+            st.subheader(podcast_info['podcast_details']['podcast_title'])
 
-        # Display the podcast title
-        #st.subheader("Episode Title")
-        st.write(podcast_info['podcast_details']['episode_title'])
-        st.audio(podcast_info['podcast_details']['episode_audio_url'])
+            # Display the podcast title
+            #st.subheader("Episode Title")
+            st.write(podcast_info['podcast_details']['episode_title'])
+            st.audio(podcast_info['podcast_details']['episode_audio_url'])
 
         # Display the podcast summary and the cover image in a side-by-side layout
         col1, col2 = st.columns([7, 3])
