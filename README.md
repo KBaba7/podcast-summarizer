@@ -1,4 +1,14 @@
 # Podcast-Summarizer
 
-This project is part of the course [Building AI products with OpenAI](https://corise.com/go/building-ai-products-with-openai-MWKY3) taught by Sidharth Ramachandran.
+This project is part of the course [Building AI products with OpenAI](https://uplimit.com/course/building-ai-products-with-openai) taught by Sidharth Ramachandran.
+
+In this project, I built an LLM app that summarizes a podcast episode, identifies podcast guests, and key momments.
+
+## Approach
+
+- Part 1: use a Large Language Model (LLM) from OpenAI to build the information extraction functionality paired with a Speech to Text model for transcribing the podcast.
+
+- Part 2: use a simple cloud deployment provider to easily convert the information extraction function to run on demand - this would be the app backend. See [Modal](https://modal.com/).
+
+- Part 3: use ChatGPT from OpenAI as coding assistant to create and deploy a front-end that allows users to experience the end to end functionality. See [Streamlit](https://streamlit.io/).
 
