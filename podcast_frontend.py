@@ -21,7 +21,7 @@ def main():
     with c1:
         st.image("mic.jpeg", width=100)
     with c2: 
-        st.markdown(f"<h1 style='color: #4c8caf;'>Podcast Newsletter</h1>", unsafe_allow_html=True)   
+        st.markdown(f"<h1 style='color: #25a5be;'>Podcast Newsletter</h1>", unsafe_allow_html=True)   
     st.divider()
 
     available_podcast_info = create_dict_from_json_files('.')
