@@ -1,9 +1,13 @@
+%%writefile /content/podcast/podcast_frontend.py
 import streamlit as st
 import modal
 import json
 import os
 
 def main():
+    # Set the page layout to wide mode
+    st.set_page_config(layout="wide")
+    # Set css styling 
     st.markdown("""
     <style>
         /* The main content area */
