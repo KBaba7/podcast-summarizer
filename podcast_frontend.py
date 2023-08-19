@@ -50,7 +50,7 @@ def main():
 
         with col1:
             # Display the podcast episode summary
-            st.subheader("Podcast Episode Summary")
+            st.markdown(f"<h2 style='color: #25a5be;'>Podcast Episode Summary</h2>", unsafe_allow_html=True)  
             st.write(podcast_info['podcast_people'])
             st.markdown("""---""")
             st.write(podcast_info['podcast_summary'])
@@ -97,7 +97,7 @@ def main():
 
             with col1:
                 # Display the podcast episode summary
-                st.subheader("Podcast Episode Summary")
+                st.markdown(f"<h2 style='color: #25a5be;'>Podcast Episode Summary</h2>", unsafe_allow_html=True) 
                 st.write(podcast_info['podcast_people'])
                 st.markdown("""---""")
                 st.write(podcast_info['podcast_summary'])
