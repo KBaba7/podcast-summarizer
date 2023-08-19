@@ -47,7 +47,7 @@ def main():
 
         # Right section - Newsletter content
         st.markdown(f'<h4 style="color: {text_color};"> {podcast_info["podcast_details"]["podcast_title"]}</h4>', unsafe_allow_html=True)
-
+        st.markdown("""---""")
         # Display the podcast title
         #st.subheader("Episode Title")
         st.write("##")
@@ -96,7 +96,7 @@ def main():
 
             # Right section - Newsletter content
             st.markdown(f'<h4 style="color: {text_color};">{podcast_info["podcast_details"]["podcast_title"]}</h4>', unsafe_allow_html=True)
-
+            st.markdown("""---""")
             # Display the podcast title
             #st.subheader("Episode Title")
             st.write("##")
