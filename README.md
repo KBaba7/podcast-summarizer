@@ -2,7 +2,7 @@
 
 This project is part of the course [Building AI products with OpenAI](https://uplimit.com/course/building-ai-products-with-openai) taught by Sidharth Ramachandran.
 
-In this project, I built an LLM app that summarizes a podcast episode, identifies podcast guests, and key momments.
+In this project, I built an LLM app that summarizes a podcast episode, identifies podcast guests, and key momments. You can view it at https://podcast-summarizer.streamlit.app/.
 
 ## Approach
 
