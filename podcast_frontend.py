@@ -8,11 +8,11 @@ def main():
     st.set_page_config(
     page_title="Podcast Summarizer",
     page_icon="🎙️",
-    layout="wide",
-    font="serif")
+    layout="wide")
     #Set css styling 
     st.markdown("""
     <style>
+        body {font-family: serif;}
         .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
     </style>
     """, unsafe_allow_html=True)
