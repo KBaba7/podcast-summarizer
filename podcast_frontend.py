@@ -5,18 +5,27 @@ import os
 
 def main():
     # Set the page layout to wide mode
-    st.set_page_config(layout="wide")
+    st.set_page_config(
+    page_title="Ex-stream-ly Cool App",
+    page_icon="🧊",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': "# This is a header. This is an *extremely* cool app!"
+    }
     # Set css styling 
-    st.markdown("""
-    <style>
-        /* The main content area */
-        .main .block-container {
-            background-color: #f7f7f7; 
-        }
-        .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
+    # st.markdown("""
+    # <style>
+    #     /* The main content area */
+    #     .main .block-container {
+    #         background-color: #f7f7f7; 
+    #     }
+    #     .stButton>button {color: white; background-color: #4c8caf; border-radius: 5px;}
         
-    </style>
-    """, unsafe_allow_html=True)
+    # </style>
+    # """, unsafe_allow_html=True)
 
     c1, c2 = st.columns([1, 6])
     with c1:
