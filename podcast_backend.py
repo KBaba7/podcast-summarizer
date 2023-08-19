@@ -106,8 +106,11 @@ def get_podcast_people(podcast_transcript):
 
     # Prepare the conversation input
     instructPrompt = """
-    You will be given the transcript of a podcast episode.  
-    Please identify the hosts and starring guests (if any). If there are no guests, say "None".
+    You will be given the transcript of a podcast episode. Please identify the hosts and starring guests (if any). 
+    For example, if the hosts are Micah Sargent and Dan Morin and the guests are Kathy Campbell and Matthew Castanelli output
+    "* Hosts: Micah Sargent, Dan Morin
+     * Guests: Kathy Campbell, Matthew Castanelli"
+    If there are no guests, say "* Guests: None".
     """
     request = instructPrompt + podcast_transcript[:10000]
     conversation = [
