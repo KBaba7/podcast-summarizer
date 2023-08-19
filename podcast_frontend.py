@@ -28,7 +28,7 @@ def main():
 
     left_col, right_col = st.columns([1,2])
     with left_col:
-        st.markdown(f"<h1 style='color: {text_color};'>🎙️ Podcast Newsletter</h1>", unsafe_allow_html=True)  
+        st.markdown(f"<h2 style='color: {text_color};'>🎙️ Podcast Newsletter</h2>", unsafe_allow_html=True)  
     with right_col:
         st.lottie(lottie_animation, height=200)
 
