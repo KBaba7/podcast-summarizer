@@ -12,5 +12,5 @@ In this project, I built an LLM app that summarizes a podcast episode, identifie
 
 - Part 2: use a simple cloud deployment provider to easily convert the information extraction function to run on demand - this would be the app backend. See [Modal](https://modal.com/).
 
-- Part 3: use ChatGPT from OpenAI as coding assistant to create and deploy a front-end that allows users to experience the end to end functionality. See [/streamlit.io](https://streamlit.io/).
+- Part 3: use ChatGPT from OpenAI as coding assistant to create and deploy a front-end that allows users to experience the end to end functionality. See [streamlit.io](https://streamlit.io/).
 
